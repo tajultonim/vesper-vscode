@@ -1,8 +1,6 @@
-# Vesper Language Support
+# <img src="https://raw.githubusercontent.com/tajultonim/vesper-vscode/main/icons/vesper-icon.png" width="36" alt="⭐"/> Vesper Language Support
 
 An official Visual Studio Code extension providing syntax highlighting, language configuration, and code formatting for the **Vesper** programming language (`.vsp`).
-
-![Vesper Banner](https://raw.githubusercontent.com/tajultonim/vesper-vscode/main/icons/vesper-icon-minimal.svg)
 
 ---
 
@@ -79,4 +77,4 @@ This extension offers the following setting:
 - `vesper.formatterPath`: Specify a custom path to the vspfmt.exe executable file.
 
 ### License
-This extension is licensed under the MIT License.
+This extension is licensed under the GPL 3 License.

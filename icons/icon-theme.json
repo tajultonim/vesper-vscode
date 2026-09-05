@@ -1,7 +1,7 @@
 {
   "iconDefinitions": {
     "_vesper": {
-      "iconPath": "./vesper-icon-minimal.svg"
+      "iconPath": "./vesper-icon.svg"
     }
   },
   "fileExtensions": {
