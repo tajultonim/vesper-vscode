@@ -33,7 +33,6 @@ jobs:
         shell: powershell
         run: |
           npx @vscode/vsce --version
-          npx @vscode/vsce ls --target win32-x64
           
       - name: Publish Extension
         env:
