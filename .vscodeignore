@@ -1,1 +1,5 @@
 .env
+.github/**
+.gitignore
+*.vsp
+tmp-*/**
