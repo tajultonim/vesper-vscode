@@ -1,5 +1,7 @@
 # Vesper Language Support
 
+> 🔴 Please make sure to read [this](#formatting-setup) step for setup. 
+
 An official Visual Studio Code extension providing syntax highlighting, language configuration, and code formatting for the **Vesper** programming language (`.vsp`).
 
 ---
@@ -26,7 +28,7 @@ An official Visual Studio Code extension providing syntax highlighting, language
 
 ### Formatting Setup
 
-This extension includes a built-in formatting provider powered by vspfmt.exe.
+This extension does not include a built-in formatting provider. **Step 2 here is necessary for it to work**.
 
 1. Enable Format on Save
    To automatically format your code when saving a .vsp file, add the following to your VS Code settings.json:
@@ -38,8 +40,8 @@ This extension includes a built-in formatting provider powered by vspfmt.exe.
 }
 ```
 
-2. Custom Formatter Executable Location (Optional)
-   By default, the extension uses the bundled executable located inside the extension directory. If you have compiled a custom version of vspfmt.exe, specify its file path in your settings:
+2. **Formatter Executable Location** (🔴 Required) 
+Due to some issues the binary file for the formatter is not shipped with the extension. Please find a file from the [release](https://github.com/tajultonim/vesper/releases/latest) section of **Vesper** or build your own `vspfmt.exe` following the instructions [here](https://github.com/tajultonim/vesper#-building) and specify its file path in your settings:
 
 ```JSON
 {
