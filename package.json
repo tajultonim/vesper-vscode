@@ -1,6 +1,6 @@
 {
   "name": "vesper-vscode",
-  "displayName": "VSCode Vesper",
+  "displayName": "Vesper VSCode",
   "version": "0.1.2",
   "description": "Language support and formatter for Vesper (.vsp)",
   "license": "ISC",
