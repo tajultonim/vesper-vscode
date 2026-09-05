@@ -27,15 +27,14 @@ jobs:
           npx @vscode/vsce package `
             --target win32-x64 `
             --allow-package-all-secrets `
-            --out extension-win32-x64.vsix `
-            --verbose
+            --out extension-win32-x64.vsix
 
       - name: Inspect VSCE
         shell: powershell
         run: |
           npx @vscode/vsce --version
           npx @vscode/vsce ls --target win32-x64
-
+          
       - name: Publish Extension
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
