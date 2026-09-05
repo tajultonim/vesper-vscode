@@ -1,3 +1,4 @@
 .env
 *.vsix
 *.vsp
+node_modules/**
