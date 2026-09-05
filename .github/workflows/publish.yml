@@ -25,4 +25,4 @@ jobs:
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
         shell: powershell
-        run: npx @vscode/vsce publish --target win32-x64 --allow-package-all-secrets --pat $env:VSCE_PAT
+        run: npx @vscode/vsce publish --target win32-x64 --pat $env:VSCE_PAT
