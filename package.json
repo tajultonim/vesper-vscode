@@ -1,0 +1,68 @@
+{
+  "name": "vesper-vscode",
+  "displayName": "VSCode Vesper",
+  "version": "0.1.0",
+  "description": "Language support and formatter for Vesper (.vsp)",
+  "license": "ISC",
+  "author": "tajultonim",
+  "publisher": "tajultonim",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tajultonim/vesper-vscode.git"
+  },
+  "main": "./extension.js",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Formatters"
+  ],
+  "activationEvents": [
+    "onLanguage:vesper"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "vesper",
+        "aliases": [
+          "Vesper",
+          "vesper"
+        ],
+        "extensions": [
+          ".vsp"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./icons/vesper-icon-minimal.svg",
+          "dark": "./icons/vesper-icon-minimal.svg"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "vesper",
+        "scopeName": "source.vesper",
+        "path": "./syntheses/vesper.tmLanguage.json"
+      }
+    ],
+    "iconThemes": [
+      {
+        "id": "vesper-icons",
+        "label": "Vesper File Icons",
+        "path": "./icons/icon-theme.json"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Vesper Configuration",
+      "properties": {
+        "vesper.formatterPath": {
+          "type": "string",
+          "default": "",
+          "description": "Optional custom path to vspfmt.exe. Leave blank to use the default bundled bin/vspfmt.exe."
+        }
+      }
+    }
+  }
+}

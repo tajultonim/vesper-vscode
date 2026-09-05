@@ -1,0 +1,13 @@
+{
+  "iconDefinitions": {
+    "_vesper": {
+      "iconPath": "./vesper-icon-minimal.svg"
+    }
+  },
+  "fileExtensions": {
+    "vsp": "_vesper"
+  },
+  "languageIds": {
+    "vesper": "_vesper"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Vesper",
+  "patterns": [
+    { "include": "#keywords" },
+    { "include": "#strings" },
+    { "include": "#numbers" },
+    { "include": "#comments" }
+  ],
+  "repository": {
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.vesper",
+          "match": "\\b(if|else|for|while|do|return|var|const|fn|struct|mut|let)\\b"
+        }
+      ]
+    },
+    "strings": {
+      "name": "string.quoted.double.vesper",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        { "name": "constant.character.escape.vesper", "match": "\\\\." }
+      ]
+    },
+    "numbers": {
+      "name": "constant.numeric.vesper",
+      "match": "\\b[0-9]+\\b"
+    },
+    "comments": {
+      "patterns": [
+        { "name": "comment.line.double-slash.vesper", "match": "//.*$" },
+        { "name": "comment.block.vesper", "begin": "/\\*", "end": "\\*/" }
+      ]
+    }
+  },
+  "scopeName": "source.vesper"
+}
