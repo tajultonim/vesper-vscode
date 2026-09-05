@@ -8,6 +8,13 @@ function activate(context) {
     "vesper",
     {
       async provideDocumentFormattingEdits(document) {
+        if (process.platform !== "win32") {
+          vscode.window.showWarningMessage(
+            "Vesper auto-formatting currently only supports Windows (requires vspfmt.exe).",
+          );
+          return [];
+        }
+
         const config = vscode.workspace.getConfiguration("vesper");
         const customPath = config.get("formatterPath");
 
