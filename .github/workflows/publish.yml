@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 jobs:
   publish:
@@ -16,13 +16,30 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Install Dependencies
         run: npm ci
 
-      - name: Package & Publish for Windows x64
+      - name: Package Extension
+        shell: powershell
+        run: |
+          npx @vscode/vsce package `
+            --target win32-x64 `
+            --allow-package-all-secrets `
+            --out extension-win32-x64.vsix `
+            --verbose
+
+      - name: Inspect VSCE
+        shell: powershell
+        run: |
+          npx @vscode/vsce --version
+          npx @vscode/vsce ls --target win32-x64
+
+      - name: Publish Extension
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
         shell: powershell
-        run: npx @vscode/vsce publish --target win32-x64
+        run: |
+          npx @vscode/vsce publish `
+            --packagePath extension-win32-x64.vsix
