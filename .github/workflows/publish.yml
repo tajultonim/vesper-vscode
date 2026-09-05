@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     tags:
-      - "v*"
+      - 'v*'
 
 jobs:
   publish:
@@ -16,12 +16,15 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: '20'
 
       - name: Install Dependencies
         run: npm ci
 
-      - name: Package & Publish for Windows x64
+      - name: Package VSIX for Windows x64
+        run: npx @vscode/vsce package --target win32-x64 --allow-package-all-secrets
+
+      - name: Publish VSIX to Marketplace
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
-        run: npx @vscode/vsce publish --target win32-x64 --allow-package-all-secrets --pat $VSCE_PAT
+        run: npx @vscode/vsce publish --packagePath *.vsix --pat $VSCE_PAT
