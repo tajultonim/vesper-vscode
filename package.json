@@ -1,11 +1,12 @@
 {
   "name": "vesper-vscode",
   "displayName": "VSCode Vesper",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Language support and formatter for Vesper (.vsp)",
   "license": "ISC",
   "author": "tajultonim",
   "publisher": "tajultonim",
+  "icon": "icons/vesper-icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/tajultonim/vesper-vscode.git"

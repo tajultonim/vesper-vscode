@@ -1,4 +1,4 @@
-# <img src="https://raw.githubusercontent.com/tajultonim/vesper-vscode/main/icons/vesper-icon.png" width="36" alt="⭐"/> Vesper Language Support
+# Vesper Language Support
 
 An official Visual Studio Code extension providing syntax highlighting, language configuration, and code formatting for the **Vesper** programming language (`.vsp`).
 
