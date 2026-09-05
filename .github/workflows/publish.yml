@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
   push:
     tags:
-      - "v*" # Triggers whenever you push a tag starting with 'v' (e.g. v0.1.0)
+      - "v*"
 
 jobs:
   publish:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest # Changed to Windows to handle .exe binaries properly
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -24,4 +24,10 @@ jobs:
       - name: Package & Publish to VS Code Marketplace
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
-        run: npx @vscode/vsce publish --pat $VSCE_PAT
+        shell: powershell
+        run: |
+          if ("${{ github.event_name }}" -eq "workflow_dispatch") {
+            npx @vscode/vsce publish patch --pat $env:VSCE_PAT
+          } else {
+            npx @vscode/vsce publish --pat $env:VSCE_PAT
+          }
