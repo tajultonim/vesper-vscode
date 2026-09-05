@@ -1,5 +1,8 @@
-.env
 .github/**
+.vscode/**
 .gitignore
 *.vsp
 tmp-*/**
+node_modules/**
+*.vsix
+*.env
