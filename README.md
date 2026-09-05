@@ -21,7 +21,7 @@ An official Visual Studio Code extension providing syntax highlighting, language
 2. Press `Ctrl + P` (or `Cmd + P` on macOS) and type:
 
    ```text
-   ext install YOUR_PUBLISHER_ID.vesper-lang
+   ext install tajultonim.vesper-vscode
    ```
 
 ### Formatting Setup
@@ -33,7 +33,7 @@ This extension includes a built-in formatting provider powered by vspfmt.exe.
 
 ```JSON
 "[vesper]": {
-"editor.defaultFormatter": "YOUR_PUBLISHER_ID.vesper-lang",
+"editor.defaultFormatter": "tajultonim.vesper-vscode",
 "editor.formatOnSave": true
 }
 ```
@@ -77,4 +77,5 @@ This extension offers the following setting:
 - `vesper.formatterPath`: Specify a custom path to the vspfmt.exe executable file.
 
 ### License
+
 This extension is licensed under the GPL 3 License.
