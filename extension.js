@@ -8,9 +8,20 @@ function getFormatterPath(context) {
   const config = vscode.workspace.getConfiguration("vesper");
   const customPath = config.get("formatterPath");
 
-  return customPath && customPath.trim() !== ""
-    ? customPath.trim()
-    : path.join(context.extensionPath, "bin", "vspfmt.exe");
+  if (customPath && customPath.trim() !== "") {
+    return customPath.trim();
+  }
+
+  const candidates = [
+    path.join(context.extensionPath, "bin", "vspfmt.exe"),
+  ];
+
+  for (const folder of vscode.workspace.workspaceFolders || []) {
+    candidates.push(path.join(folder.uri.fsPath, "build", "vspfmt.exe"));
+    candidates.push(path.join(folder.uri.fsPath, "vspfmt.exe"));
+  }
+
+  return candidates.find((candidate) => fs.existsSync(candidate)) || "vspfmt";
 }
 
 function getInterpreterPath(context) {
@@ -21,27 +32,18 @@ function getInterpreterPath(context) {
     return configuredPath.trim();
   }
 
-  const candidates = [
-    path.join(context.extensionPath, "bin", "vesper.exe"),
-  ];
+  const candidates = [path.join(context.extensionPath, "bin", "vesper.exe")];
 
   for (const folder of vscode.workspace.workspaceFolders || []) {
     candidates.push(path.join(folder.uri.fsPath, "build", "vesper.exe"));
     candidates.push(path.join(folder.uri.fsPath, "vesper.exe"));
   }
 
-  return candidates.find((candidate) => fs.existsSync(candidate));
+  return candidates.find((candidate) => fs.existsSync(candidate)) || "vesper";
 }
 
 function runDocument(context, document) {
   const interpreterPath = getInterpreterPath(context);
-
-  if (!interpreterPath) {
-    vscode.window.showErrorMessage(
-      "Vesper interpreter not found. Set vesper.interpreterPath or build vesper.exe in your workspace.",
-    );
-    return;
-  }
 
   if (document.isUntitled) {
     vscode.window.showInformationMessage(
@@ -133,9 +135,10 @@ function createCompletionProvider() {
 function formatDocument(context, document) {
   const exePath = getFormatterPath(context);
 
-  if (!fs.existsSync(exePath)) {
+  const isPath = path.isAbsolute(exePath) || exePath.includes(path.sep);
+  if (isPath && !fs.existsSync(exePath)) {
     vscode.window.showErrorMessage(
-      `Vesper Formatter executable not found at: ${exePath}`,
+      `Vesper formatter not found at: ${exePath}. Set vesper.formatterPath or add vspfmt to PATH.`,
     );
     return Promise.resolve([]);
   }
