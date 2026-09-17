@@ -1,7 +1,7 @@
 {
   "name": "vesper-vscode",
   "displayName": "Vesper VSCode",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Language support and formatter for Vesper (.vsp) for Windows. Includes syntax highlighting, file icons, and auto-formatting.",
   "license": "ISC",
   "author": "tajultonim",
@@ -62,8 +62,37 @@
           "type": "string",
           "default": "",
           "description": "Optional custom path to vspfmt.exe. Leave blank to use the default bundled bin/vspfmt.exe."
+        },
+        "vesper.interpreterPath": {
+          "type": "string",
+          "default": "",
+          "description": "Optional path to vesper.exe. Leave blank to use a bundled interpreter or build/vesper.exe from the workspace."
         }
       }
+    },
+    "commands": [
+      {
+        "command": "vesper.formatDocument",
+        "title": "Vesper: Format Document"
+      },
+      {
+        "command": "vesper.runFile",
+        "title": "Vesper: Run File"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "vesper.runFile",
+          "when": "editorLangId == vesper",
+          "group": "navigation@1"
+        },
+        {
+          "command": "vesper.formatDocument",
+          "when": "editorLangId == vesper",
+          "group": "navigation@2"
+        }
+      ]
     }
   },
   "devDependencies": {

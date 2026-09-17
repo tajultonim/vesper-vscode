@@ -5,14 +5,80 @@
     { "include": "#keywords" },
     { "include": "#strings" },
     { "include": "#numbers" },
-    { "include": "#comments" }
+    { "include": "#comments" },
+    { "include": "#constants" },
+    { "include": "#types" },
+    { "include": "#operators" },
+    { "include": "#function-calls" },
+    { "include": "#declarations" },
+    { "include": "#member-access" }
   ],
   "repository": {
     "keywords": {
       "patterns": [
         {
           "name": "keyword.control.vesper",
-          "match": "\\b(if|else|for|while|return|fn|struct|mut|let|in|import)\\b"
+          "match": "\\b(if|else|while|break|return|fn|mut|let|import|as|export|extern)\\b"
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        {
+          "name": "constant.language.vesper",
+          "match": "\\b(true|false)\\b"
+        }
+      ]
+    },
+    "types": {
+      "patterns": [
+        {
+          "name": "storage.type.vesper",
+          "match": "\\b(int|float|bool|string|void)\\b"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.vesper",
+          "match": "(\\*\\*|//|==|!=|<=|>=|[+*/%<>=-])"
+        }
+      ]
+    },
+    "function-calls": {
+      "patterns": [
+        {
+          "name": "entity.name.function.vesper",
+          "match": "\\b[A-Za-z_][A-Za-z0-9_]*(?=\\s*\\()"
+        }
+      ]
+    },
+    "declarations": {
+      "patterns": [
+        {
+          "match": "\\bfn\\s+([A-Za-z_][A-Za-z0-9_]*)",
+          "captures": {
+            "1": {
+              "name": "entity.name.function.vesper"
+            }
+          }
+        },
+        {
+          "match": "\\b(?:let|mut)\\s+([A-Za-z_][A-Za-z0-9_]*)",
+          "captures": {
+            "1": {
+              "name": "variable.other.vesper"
+            }
+          }
+        }
+      ]
+    },
+    "member-access": {
+      "patterns": [
+        {
+          "name": "variable.other.member.vesper",
+          "match": "(?<=\\.)[A-Za-z_][A-Za-z0-9_]*"
         }
       ]
     },

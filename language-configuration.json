@@ -13,5 +13,12 @@
     { "open": "(", "close": ")" },
     { "open": "[", "close": "]" },
     { "open": "\"", "close": "\"" }
-  ]
+  ],
+  "wordPattern": "(-?\\d+(\\.\\d+)?)|([\\w$]+)",
+  "folding": {
+    "markers": {
+      "start": "^\\s*#region\\b",
+      "end": "^\\s*#endregion\\b"
+    }
+  }
 }

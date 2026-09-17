@@ -7,7 +7,9 @@ An official Visual Studio Code extension providing syntax highlighting, language
 ## Features
 
 - 🎨 **Syntax Highlighting:** Full colorizing support for keywords, control flow, functions, comments, numbers, and string literals.
+- ✨ **Autocomplete:** Suggestions for Vesper keywords, types, builtins, local variables, and functions.
 - ⚡ **Integrated Formatter:** Automatically formats your `.vsp` source code on save or via command palette using `vspfmt.exe`.
+- ▶️ **Run Button:** Run the active Vesper file from the editor title bar or the command palette.
 - 📁 **File Association:** Native recognition for `.vsp` files with a custom vector file icon.
 - 🛠️ **Language Configuration:** Automatic bracket closing, quote pairing, and block/line comment toggles (`Ctrl + /`).
 
@@ -26,7 +28,8 @@ An official Visual Studio Code extension providing syntax highlighting, language
 
 ### Formatting Setup
 
-This extension includes a built-in formatting provider powered by vspfmt.exe.
+This extension includes a built-in formatting provider powered by `vspfmt.exe`.
+Formatting uses the current editor content, so unsaved changes are supported.
 
 1. Enable Format on Save
    To automatically format your code when saving a .vsp file, add the following to your VS Code settings.json:
@@ -47,34 +50,47 @@ This extension includes a built-in formatting provider powered by vspfmt.exe.
 }
 ```
 
-### Syntax Overview
+3. Interpreter Location (Optional)
+    The extension looks for `vesper.exe` in the workspace `build` directory. To use another interpreter, configure:
 
-Vesper is a C-inspired language built for modern clarity:
-
-```vsp
-// Variable declaration & control flow
-var x: int = 10;
-
-if (x > 0) {
-printf("Positive\n");
-} else {
-printf("Non-positive\n");
-}
-
-// Single-line conditional
-if (x % 2 == 0) printf("Even\n");
-
-// Functions
-fn add(a: int, b: int) -> int {
-return a + b;
+```JSON
+{
+   "vesper.interpreterPath": "C:/path/to/vesper.exe"
 }
 ```
+
+### Syntax Overview
+
+Vesper uses typed declarations, functions, imports, and expression-based control flow:
+
+```vsp
+let x: int = 10;
+mut total: int = 0;
+
+if (x > 0) {
+   print("Positive\n");
+} else {
+   print("Non-positive\n");
+}
+
+fn add(a: int, b: int): int {
+   return a + b;
+}
+
+import "math" as m;
+let answer = m.factorial(5);
+print(answer);
+```
+
+The formatter understands imports, arrays, indexing, member calls, comments,
+`export` and `extern` functions, and `void` return types.
 
 ### Extension Settings
 
 This extension offers the following setting:
 
 - `vesper.formatterPath`: Specify a custom path to the vspfmt.exe executable file.
+- `vesper.interpreterPath`: Specify a custom path to the Vesper interpreter used by the Run button.
 
 ### License
 
