@@ -61,12 +61,12 @@
         "vesper.formatterPath": {
           "type": "string",
           "default": "",
-          "description": "Optional custom path to vspfmt.exe. Leave blank to use the default bundled bin/vspfmt.exe."
+          "description": "Optional path to vspfmt.exe. Leave blank to use a workspace build or the vspfmt command from PATH."
         },
         "vesper.interpreterPath": {
           "type": "string",
           "default": "",
-          "description": "Optional path to vesper.exe. Leave blank to use a bundled interpreter or build/vesper.exe from the workspace."
+          "description": "Optional path to vesper.exe. Leave blank to use a workspace build or the vesper command from PATH."
         }
       }
     },

@@ -52,7 +52,15 @@ The formatter binary is not shipped with the extension. The extension checks you
 ```
 
 3. Interpreter Location (Optional)
-   The extension checks your workspace `build` directory and then `PATH` for `vesper`. To use another interpreter, configure:
+   The Run button selects the interpreter in this order:
+
+   1. `vesper.interpreterPath`, when configured.
+   2. `bin/vesper.exe` inside the extension, if present.
+   3. `build/vesper.exe` in an open workspace.
+   4. `vesper.exe` in the workspace root.
+   5. The `vesper` command from `PATH`.
+
+   To use another interpreter, configure:
 
 ```JSON
 {
