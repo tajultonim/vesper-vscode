@@ -40,4 +40,5 @@ jobs:
         shell: powershell
         run: |
           npx @vscode/vsce publish `
-            --packagePath extension-win32-x64.vsix
+            --packagePath extension-win32-x64.vsix `
+            --skip-duplicate
